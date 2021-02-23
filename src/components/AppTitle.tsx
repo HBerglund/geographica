@@ -8,8 +8,6 @@ function AppTitle() {
 const titleStyle: CSSProperties = {
   position: "fixed",
   top: "25%",
-  color: "black",
-  fontSize: "4vw",
 };
 
 export default AppTitle;

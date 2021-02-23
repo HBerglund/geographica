@@ -2,14 +2,13 @@ import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React from "react";
 import AppTitle from "../components/AppTitle";
 import SearchBar from "../components/SearchBar";
-import Footer from "../components/Footer";
+import Navbar from "../navigation/Navbar";
 
 function Home() {
   return (
     <div style={rootStyle}>
       <AppTitle />
       <SearchBar />
-      <Footer />
     </div>
   );
 }

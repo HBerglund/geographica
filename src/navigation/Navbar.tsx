@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import { Link } from "react-router-dom";
-import { routes } from "../navigation/routes";
+import { routes } from "./routes";
 
 const useStyles = makeStyles({
   root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Footer() {
+function Navbar() {
   const classes = useStyles();
   return (
     <BottomNavigation className={classes.root} showLabels>
@@ -35,4 +35,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Navbar;
