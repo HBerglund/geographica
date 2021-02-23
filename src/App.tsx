@@ -4,10 +4,12 @@ import Background from "./components/Background";
 
 function App() {
   return (
+    // <>
+    //   <Background />
+    //   <Layout />
+    // </>
     <>
-      <h1>Hello World</h1>
-      <Background />
-      <Layout />
+      <h1>hej</h1>
     </>
   );
 }
