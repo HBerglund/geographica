@@ -1,5 +1,4 @@
 import React from "react";
-/* import Background from "./components/Background"; */
 import BrowserRouter from "./navigation/Router";
 import { AppTheme } from "./Theme";
 
@@ -9,7 +8,6 @@ function App() {
       <AppTheme>
         <BrowserRouter />
       </AppTheme>
-      {/* <Background /> */}
     </>
   );
 }

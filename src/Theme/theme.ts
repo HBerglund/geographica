@@ -10,6 +10,5 @@ export const theme = ({ prefersDark }: ThemeProps) =>
   responsiveFontSizes(
     createMuiTheme({
       palette: { type: prefersDark ? "dark" : "light" },
-      spacing: 4,
     })
   );

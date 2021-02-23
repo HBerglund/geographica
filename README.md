@@ -2,7 +2,7 @@
 
 ## Start
 
-Run "npm start"
+Run "npm install" & "npm start"
 
 ## About
 
