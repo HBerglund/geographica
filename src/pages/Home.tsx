@@ -1,10 +1,10 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React from "react";
-import AppTitle from "./AppTitle";
-import Footer from "./Footer";
-import SearchBar from "./SearchBar";
+import AppTitle from "../components/AppTitle";
+import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
 
-function Layout() {
+function Home() {
   return (
     <div style={rootStyle}>
       <AppTitle />
@@ -22,4 +22,4 @@ const rootStyle: CSSProperties = {
   height: "100%",
 };
 
-export default Layout;
+export default Home;
