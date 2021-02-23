@@ -1,15 +1,12 @@
 import React from "react";
-import Layout from "./components/Layout";
 import Background from "./components/Background";
+import BrowserRouter from "./navigation/Router";
 
 function App() {
   return (
-    // <>
-    //   <Background />
-    //   <Layout />
-    // </>
     <>
-      <h1>hej</h1>
+      <BrowserRouter />
+      {/* <Background /> */}
     </>
   );
 }

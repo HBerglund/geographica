@@ -1,25 +1,38 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import { Link } from "react-router-dom";
+import { routes } from "../navigation/routes";
+
+const useStyles = makeStyles({
+  root: {
+    position: "fixed",
+    bottom: "0",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "30rem",
+    margin: "1rem",
+    backgroundColor: "transparent",
+    color: "black",
+  },
+});
 
 function Footer() {
+  const classes = useStyles();
   return (
-    <BottomNavigation style={rootStyle} showLabels>
-      <BottomNavigationAction label="About" />
-      <BottomNavigationAction label="Contact" />
-      <BottomNavigationAction label="Privacy" />
+    <BottomNavigation className={classes.root} showLabels>
+      {routes.map(({ name, path }) => (
+        <BottomNavigationAction
+          component={Link}
+          key={name}
+          value={name}
+          label={name}
+          to={path}
+        />
+      ))}
     </BottomNavigation>
   );
 }
-
-const rootStyle: CSSProperties = {
-  position: "fixed",
-  bottom: "0",
-  width: "30rem",
-  margin: "1rem",
-  backgroundColor: "transparent",
-  color: "black",
-};
 
 export default Footer;
