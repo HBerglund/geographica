@@ -1,8 +1,8 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React from "react";
 import AppTitle from "../components/AppTitle";
-import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
+import Footer from "../components/Footer";
 
 function Home() {
   return (

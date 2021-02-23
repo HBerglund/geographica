@@ -3,8 +3,8 @@ import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import Map from "../pages/Map";
 import About from "../pages/About";
-import Privacy from "../pages/Privacy";
 import Contact from "../pages/Contact";
+import Privacy from "../pages/Privacy";
 
 function Router() {
   return (
