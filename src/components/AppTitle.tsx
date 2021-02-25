@@ -1,5 +1,5 @@
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React from "react";
+import { CSSProperties } from "@material-ui/core/styles/withStyles";
 
 function AppTitle() {
   return <h1 style={titleStyle}>Geographica</h1>;

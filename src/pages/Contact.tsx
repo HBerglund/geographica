@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../navigation/Navbar";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 
 function Contact() {
