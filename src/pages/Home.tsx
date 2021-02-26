@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import ReactMapGL from "react-map-gl";
 import SearchView from "./SearchView";
-import { light } from "@material-ui/core/styles/createPalette";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 function Home() {
