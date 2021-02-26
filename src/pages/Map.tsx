@@ -4,6 +4,8 @@ import ReactMapGL from "react-map-gl";
 import SearchView from "./SearchView";
 import { light } from "@material-ui/core/styles/createPalette";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { features } from "process";
+import { setConstantValue } from "typescript";
 
 interface Props {
   lat: number;
@@ -17,6 +19,10 @@ function Map() {
   const darkStyle = "mapbox://styles/hberglund/cklkvbhbg1u7e17qokmikay98";
   const lightStyle = "mapbox://styles/hberglund/cklkxtfro0da417ppvlgei9uk";
 
+  const [input, setInput] = useState({
+    inputValue: "",
+  });
+
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
@@ -25,18 +31,34 @@ function Map() {
     longitude: 0,
   });
 
-  const goToNYC = () => {
-    setViewport({
-      ...viewport,
-      longitude: -74.1,
-      latitude: 40.7,
-      zoom: 14,
-    });
+  const catchInput = (input: string) => {
+    getCoordinates(input);
   };
+
+  async function getCoordinates(input: string) {
+    const mapBoxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
+    const mapBoxToken =
+      "access_token=pk.eyJ1IjoiaGJlcmdsdW5kIiwiYSI6ImNrbGlrNHNsNjIwZWMyem1nM3UxeXQyb3oifQ.zsesf-3iJHNpG_Nq_WMi9A";
+    const response = await fetch(mapBoxURL + input + ".json?" + mapBoxToken);
+    const result = await response.json();
+
+    const long = result.features[0].geometry.coordinates[0];
+    const lat = result.features[0].geometry.coordinates[1];
+
+    setViewport((prevViewport) => {
+      return {
+        ...prevViewport,
+        latitude: lat,
+        longitude: long,
+        zoom: 3,
+      };
+    });
+  }
+
   return (
     <>
       <div>
-        <SearchView goTo={goToNYC} />
+        <SearchView triggerSearch={catchInput} />
       </div>
       <div style={mapStyle}>
         <ReactMapGL

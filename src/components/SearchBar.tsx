@@ -3,10 +3,16 @@ import TextField from "@material-ui/core/TextField";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 
 interface Props {
-  goTo: () => void;
+  triggerSearch: (inputValue: string) => void;
 }
 
 function SearchBar(props: Props) {
+  let inputValue: string = "";
+
+  const triggerSearch = () => {
+    props.triggerSearch(inputValue);
+  };
+
   return (
     <>
       <TextField
@@ -14,8 +20,11 @@ function SearchBar(props: Props) {
         label="Search for a city"
         margin="normal"
         variant="outlined"
+        onChange={(e) => {
+          inputValue = String(e.target.value);
+        }}
       />
-      <button onClick={props.goTo}>New York</button>
+      <button onClick={triggerSearch}>New York</button>
     </>
   );
 }
