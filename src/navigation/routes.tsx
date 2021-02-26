@@ -1,5 +1,3 @@
-import React from "react";
-
 export const routes: { name: string; path: string }[] = [
   {
     name: "Home",
