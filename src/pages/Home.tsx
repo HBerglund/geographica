@@ -11,10 +11,6 @@ function Home() {
   const darkStyle = "mapbox://styles/hberglund/cklkvbhbg1u7e17qokmikay98";
   const lightStyle = "mapbox://styles/hberglund/cklkxtfro0da417ppvlgei9uk";
 
-  const [input, setInput] = useState({
-    inputValue: "",
-  });
-
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
