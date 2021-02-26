@@ -4,26 +4,19 @@ import AppTitle from "../components/AppTitle";
 import SearchBar from "../components/SearchBar";
 
 interface Props {
-  goTo: () => void;
+  triggerSearch: (inputValue: string) => void;
 }
 
 class SearchView extends Component<Props> {
+  triggerSearch = (input: string) => {
+    this.props.triggerSearch(input);
+  };
+
   render() {
-    const APIKey = "AIzaSyDx_oW4Wfsb2g3pE5n7w094wfGwHcLh2l0";
-
-    async function fetchGoogle() {
-      const dataPath = "https://maps.googleapis.com/maps/api/geocode/json?";
-      const response = await fetch(dataPath);
-      const result = await response.json();
-      console.log(result);
-    }
-
-    fetchGoogle();
-
     return (
       <div style={rootStyle}>
         <AppTitle />
-        <SearchBar goTo={this.props.goTo} />
+        <SearchBar triggerSearch={this.triggerSearch} />
       </div>
     );
   }
