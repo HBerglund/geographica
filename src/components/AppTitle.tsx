@@ -7,7 +7,8 @@ function AppTitle() {
 
 const titleStyle: CSSProperties = {
   position: "fixed",
-  top: "25%",
+  top: "3%",
+  left: "3%",
 };
 
 export default AppTitle;
