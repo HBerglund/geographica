@@ -4,13 +4,6 @@ import ReactMapGL from "react-map-gl";
 import SearchView from "./SearchView";
 import { light } from "@material-ui/core/styles/createPalette";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { features } from "process";
-import { setConstantValue } from "typescript";
-
-interface Props {
-  lat: number;
-  long: number;
-}
 
 function Home() {
   const token =
