@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import ReactMapGL from "react-map-gl";
-import SearchView from "./SearchView";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import ViewContainer from "../components/ViewContainer";
 
 function Home() {
   const token =
@@ -19,7 +19,10 @@ function Home() {
     longitude: 0,
   });
 
+  let currentView: "search" | "result" = "search";
+
   async function triggerSearch(input: string) {
+    currentView = "result";
     const coordinates = await getCoordinates(input);
     goToDestination(coordinates);
   }
@@ -53,7 +56,7 @@ function Home() {
   return (
     <>
       <div style={{ height: "100%" }}>
-        <SearchView triggerSearch={triggerSearch} />
+        <ViewContainer triggerSearch={triggerSearch} view={currentView} />
       </div>
       <div style={mapStyle}>
         <ReactMapGL

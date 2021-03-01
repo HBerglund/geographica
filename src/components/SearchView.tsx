@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
-import AppTitle from "../components/AppTitle";
-import SearchBar from "../components/SearchBar";
+import AppTitle from "./AppTitle";
+import SearchBar from "./SearchBar";
 
 interface Props {
   triggerSearch: (inputValue: string) => void;
