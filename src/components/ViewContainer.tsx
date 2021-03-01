@@ -3,7 +3,7 @@ import ResultView from "./ResultView";
 import SearchView from "./SearchView";
 
 interface Props {
-  view: "search" | "result";
+  showSearch: boolean;
   triggerSearch: (inputValue: string) => void;
 }
 
@@ -12,19 +12,9 @@ interface State {
 }
 
 class ViewContainer extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-  }
-
   state: State = {
-    currentView: "search",
+    currentView: this.props.showSearch ? "search" : "result",
   };
-
-  componentDidUpdate(prevProps: Props) {
-    if (prevProps.view !== this.props.view) {
-      console.log(this.props.view);
-    }
-  }
 
   updateView(view: "search" | "result") {
     console.log(view);
@@ -34,18 +24,10 @@ class ViewContainer extends Component<Props, State> {
   }
 
   render() {
-    if (this.state.currentView === "search") {
-      return (
-        <>
-          <SearchView triggerSearch={this.props.triggerSearch} />
-        </>
-      );
+    if (this.props.showSearch) {
+      return <SearchView triggerSearch={this.props.triggerSearch} />;
     } else {
-      return (
-        <>
-          <ResultView />
-        </>
-      );
+      return <ResultView />;
     }
   }
 }

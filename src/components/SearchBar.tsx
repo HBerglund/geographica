@@ -2,7 +2,6 @@ import React, { ChangeEvent, KeyboardEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
-import { Container } from "@material-ui/core";
 
 interface Props {
   triggerSearch: (inputValue: string) => void;
@@ -12,7 +11,11 @@ function SearchBar(props: Props) {
   let inputValue: string = "";
 
   const triggerSearch = () => {
-    props.triggerSearch(inputValue);
+    if (inputValue) {
+      props.triggerSearch(inputValue);
+    } else {
+      alert("FIX THIS");
+    }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {

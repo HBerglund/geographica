@@ -19,12 +19,14 @@ function Home() {
     longitude: 0,
   });
 
-  let currentView: "search" | "result" = "search";
+  const [showSearch, setShowSearch] = useState(true);
 
   async function triggerSearch(input: string) {
-    currentView = "result";
+    setShowSearch(false);
     const coordinates = await getCoordinates(input);
-    goToDestination(coordinates);
+    if (coordinates) {
+      goToDestination(coordinates);
+    }
   }
 
   async function getCoordinates(input: string) {
@@ -34,14 +36,17 @@ function Home() {
     const response = await fetch(mapBoxURL + input + ".json?" + mapBoxToken);
     const result = await response.json();
 
-    return {
-      long: result.features[0].geometry.coordinates[0],
-      lat: result.features[0].geometry.coordinates[1],
-    };
+    if (result.features[0].place_name === input) {
+      return {
+        long: result.features[0].geometry.coordinates[0],
+        lat: result.features[0].geometry.coordinates[1],
+        name: result.features[0].place_name,
+      };
+    }
   }
 
   const goToDestination = (coordinates: any) => {
-    console.log(coordinates);
+    console.log(showSearch);
     // Fix typing later
     setViewport((prevViewport) => {
       return {
@@ -53,12 +58,22 @@ function Home() {
     });
   };
 
+  const getMapStyle = (): CSSProperties => {
+    return {
+      width: "100%",
+      height: "100%",
+      position: "fixed",
+      zIndex: -100,
+      opacity: showSearch ? 0.5 : 1,
+    };
+  };
+
   return (
-    <>
+    <div>
       <div style={{ height: "100%" }}>
-        <ViewContainer triggerSearch={triggerSearch} view={currentView} />
+        <ViewContainer triggerSearch={triggerSearch} showSearch={showSearch} />
       </div>
-      <div style={mapStyle}>
+      <div style={getMapStyle()}>
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={token}
@@ -66,16 +81,8 @@ function Home() {
           onViewportChange={setViewport}
         ></ReactMapGL>
       </div>
-    </>
+    </div>
   );
 }
-
-const mapStyle: CSSProperties = {
-  width: "100%",
-  height: "100%",
-  position: "fixed",
-  zIndex: -100,
-  opacity: "0.5",
-};
 
 export default Home;

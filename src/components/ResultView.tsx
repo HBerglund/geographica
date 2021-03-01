@@ -1,7 +1,11 @@
-import React from "react";
+import { CSSProperties } from "@material-ui/core/styles/withStyles";
 
 function ResultView() {
-  return <div>Hejhej</div>;
+  return <div style={rootStyle}>Hejhej</div>;
 }
+
+const rootStyle: CSSProperties = {
+  position: "absolute",
+};
 
 export default ResultView;
