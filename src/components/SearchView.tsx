@@ -4,19 +4,19 @@ import AppTitle from "./AppTitle";
 import SearchBar from "./SearchBar";
 
 interface Props {
-  triggerSearch: (inputValue: string) => void;
+  setSearchValue: (searchValue: string) => void;
 }
 
 class SearchView extends Component<Props> {
-  triggerSearch = (input: string) => {
-    this.props.triggerSearch(input);
+  setSearchValue = (searchValue: string) => {
+    this.props.setSearchValue(searchValue);
   };
 
   render() {
     return (
       <div style={rootStyle}>
         <AppTitle />
-        <SearchBar triggerSearch={this.triggerSearch} />
+        <SearchBar setSearchValue={this.setSearchValue} />
       </div>
     );
   }
