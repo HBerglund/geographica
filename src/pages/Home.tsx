@@ -6,13 +6,17 @@ function Home() {
   const [showSearch, setShowSearch] = useState(true);
   const [searchInput, setSearchInput] = useState("");
 
-  const setSearchValue = (searchValue: string) => {
+  const handleSearchValueChange = (searchValue: string) => {
     setSearchInput(searchValue);
+    setShowSearch(false);
   };
 
   return (
     <div>
-      <ViewContainer setSearchValue={setSearchValue} showSearch={showSearch} />
+      <ViewContainer
+        onSearchValueChange={handleSearchValueChange}
+        showSearch={showSearch}
+      />
       <Map searchValue={searchInput} />
     </div>
   );

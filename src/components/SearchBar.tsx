@@ -4,15 +4,15 @@ import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
 
 interface Props {
-  setSearchValue: (searchValue: string) => void;
+  onSearchValueChange: (searchValue: string) => void;
 }
 
 function SearchBar(props: Props) {
   let searchValue: string = "";
 
-  const setSearchValue = () => {
+  const onSearchValueChange = () => {
     if (searchValue) {
-      props.setSearchValue(searchValue);
+      props.onSearchValueChange(searchValue);
     } else {
       alert("FIX THIS");
     }
@@ -24,7 +24,7 @@ function SearchBar(props: Props) {
 
   const handleEnterEvent = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setSearchValue();
+      onSearchValueChange();
     }
   };
 
@@ -38,7 +38,7 @@ function SearchBar(props: Props) {
         onChange={handleInputChange}
         onKeyPress={handleEnterEvent}
       ></TextField>
-      <Button onClick={setSearchValue} style={btnStyle}>
+      <Button onClick={onSearchValueChange} style={btnStyle}>
         Search
       </Button>
     </>

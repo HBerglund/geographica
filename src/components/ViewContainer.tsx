@@ -4,7 +4,7 @@ import SearchView from "./SearchView";
 
 interface Props {
   showSearch: boolean;
-  setSearchValue: (searchValue: string) => void;
+  onSearchValueChange: (searchValue: string) => void;
 }
 
 interface State {
@@ -25,7 +25,9 @@ class ViewContainer extends Component<Props, State> {
 
   render() {
     if (this.props.showSearch) {
-      return <SearchView setSearchValue={this.props.setSearchValue} />;
+      return (
+        <SearchView onSearchValueChange={this.props.onSearchValueChange} />
+      );
     } else {
       return <ResultView />;
     }
