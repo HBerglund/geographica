@@ -1,25 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, CSSProperties } from "react";
 import ViewContainer from "../components/ViewContainer";
 import Map from "../components/Map";
+import AppTitle from "../components/AppTitle";
+import SearchBar from "../components/SearchBar";
 
 function Home() {
-  const [showSearch, setShowSearch] = useState(true);
-  const [searchInput, setSearchInput] = useState("");
+  const [showResult, setShowResult] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleSearchValueChange = (searchValue: string) => {
-    setSearchInput(searchValue);
-    setShowSearch(false);
+    setSearchValue(searchValue);
+    setShowResult(true);
   };
 
   return (
-    <div>
-      <ViewContainer
+    <div style={rootStyle}>
+      <AppTitle />
+      <SearchBar
         onSearchValueChange={handleSearchValueChange}
-        showSearch={showSearch}
+        showResult={showResult}
       />
-      <Map searchValue={searchInput} />
+      <Map searchValue={searchValue} />
+      <ViewContainer showResult={showResult} />
     </div>
   );
 }
+
+const rootStyle: CSSProperties = {
+  height: "100%",
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
 export default Home;

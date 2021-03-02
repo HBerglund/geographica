@@ -1,14 +1,23 @@
 import React, { ChangeEvent, KeyboardEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
-import Button from "@material-ui/core/Button";
 
 interface Props {
   onSearchValueChange: (searchValue: string) => void;
+  showResult: boolean;
 }
 
 function SearchBar(props: Props) {
   let searchValue: string = "";
+
+  const rootStyle: CSSProperties = {
+    minWidth: "30rem",
+    position: "fixed",
+    top: props.showResult ? "1%" : "48%",
+    transform: props.showResult ? "translateY(-5%)" : "translateY(-48%)",
+    zIndex: 50,
+    transition: "all 1s ease",
+  };
 
   const onSearchValueChange = () => {
     if (searchValue) {
@@ -32,31 +41,14 @@ function SearchBar(props: Props) {
     <>
       <TextField
         style={rootStyle}
-        label="Search for a city"
+        label="Search for any country"
         margin="normal"
         variant="outlined"
         onChange={handleInputChange}
         onKeyPress={handleEnterEvent}
       ></TextField>
-      <Button onClick={onSearchValueChange} style={btnStyle}>
-        Search
-      </Button>
     </>
   );
 }
-
-const rootStyle: CSSProperties = {
-  minWidth: "30rem",
-  position: "fixed",
-  top: "48%",
-  transform: "translateY(-48%)",
-  zIndex: 50,
-};
-
-const btnStyle: CSSProperties = {
-  position: "absolute",
-  zIndex: 110,
-  top: "55%",
-};
 
 export default SearchBar;

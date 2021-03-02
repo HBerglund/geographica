@@ -1,35 +1,16 @@
 import React, { Component } from "react";
 import ResultView from "./ResultView";
-import SearchView from "./SearchView";
 
 interface Props {
-  showSearch: boolean;
-  onSearchValueChange: (searchValue: string) => void;
+  showResult: boolean;
 }
 
-interface State {
-  currentView: "search" | "result";
-}
-
-class ViewContainer extends Component<Props, State> {
-  state: State = {
-    currentView: this.props.showSearch ? "search" : "result",
-  };
-
-  updateView(view: "search" | "result") {
-    console.log(view);
-    /* this.setState({
-      currentView: view,
-    }); */
-  }
-
+class ViewContainer extends Component<Props> {
   render() {
-    if (this.props.showSearch) {
-      return (
-        <SearchView onSearchValueChange={this.props.onSearchValueChange} />
-      );
-    } else {
+    if (this.props.showResult) {
       return <ResultView />;
+    } else {
+      return null;
     }
   }
 }
