@@ -4,11 +4,9 @@ import { AppTheme } from "./Theme";
 
 function App() {
   return (
-    <>
-      <AppTheme>
-        <Router />
-      </AppTheme>
-    </>
+    <AppTheme>
+      <Router />
+    </AppTheme>
   );
 }
 

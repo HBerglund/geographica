@@ -2,26 +2,29 @@ import React, { ChangeEvent, KeyboardEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
-import { Container } from "@material-ui/core";
 
 interface Props {
-  triggerSearch: (inputValue: string) => void;
+  onSearchValueChange: (searchValue: string) => void;
 }
 
 function SearchBar(props: Props) {
-  let inputValue: string = "";
+  let searchValue: string = "";
 
-  const triggerSearch = () => {
-    props.triggerSearch(inputValue);
+  const onSearchValueChange = () => {
+    if (searchValue) {
+      props.onSearchValueChange(searchValue);
+    } else {
+      alert("FIX THIS");
+    }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    inputValue = String(e.target.value);
+    searchValue = String(e.target.value);
   };
 
   const handleEnterEvent = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      triggerSearch();
+      onSearchValueChange();
     }
   };
 
@@ -35,7 +38,7 @@ function SearchBar(props: Props) {
         onChange={handleInputChange}
         onKeyPress={handleEnterEvent}
       ></TextField>
-      <Button onClick={triggerSearch} style={btnStyle}>
+      <Button onClick={onSearchValueChange} style={btnStyle}>
         Search
       </Button>
     </>

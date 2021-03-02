@@ -1,4 +1,3 @@
-import React from "react";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 
 function AppTitle() {

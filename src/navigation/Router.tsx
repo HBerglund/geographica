@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
-import SearchView from "../components/SearchView";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
