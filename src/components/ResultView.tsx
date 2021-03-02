@@ -6,7 +6,18 @@ interface Props {
   searchValue: string;
 }
 
+async function fetchCountries(searchValue: string) {
+  const restCountriesAPI = `https://restcountries.eu/rest/v2/name/${searchValue}`;
+  const response = await fetch(restCountriesAPI);
+  const result = await response.json();
+  console.log(result);
+}
+
 function ResultView(props: Props) {
+  useEffect(() => {
+    fetchCountries(props.searchValue);
+  }, [props.searchValue]);
+
   const [contentVisible, setContentVisible] = useState(false);
 
   const rootStyle: CSSProperties = {
