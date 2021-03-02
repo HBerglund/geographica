@@ -21,7 +21,7 @@ function Home() {
         showResult={showResult}
       />
       <Map searchValue={searchValue} />
-      <ViewContainer showResult={showResult} />
+      <ViewContainer showResult={showResult} searchValue={searchValue} />
     </div>
   );
 }

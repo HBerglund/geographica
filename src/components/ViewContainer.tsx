@@ -1,17 +1,15 @@
-import React, { Component } from "react";
 import ResultView from "./ResultView";
 
 interface Props {
   showResult: boolean;
+  searchValue: string;
 }
 
-class ViewContainer extends Component<Props> {
-  render() {
-    if (this.props.showResult) {
-      return <ResultView />;
-    } else {
-      return null;
-    }
+function ViewContainer(props: Props) {
+  if (props.showResult) {
+    return <ResultView searchValue={props.searchValue} />;
+  } else {
+    return null;
   }
 }
 
