@@ -18,7 +18,6 @@ async function getCoordinates(input: string) {
   const mapBoxToken = "access_token=" + token;
   const response = await fetch(mapBoxURL + input + ".json?" + mapBoxToken);
   const result = await response.json();
-  console.log(result);
   const feature = result.features.find((feature: any) => {
     return feature.place_type.includes("country");
   });
