@@ -21,7 +21,10 @@ function ResultView(props: Props) {
       const restCountriesAPI = `https://restcountries.eu/rest/v2/name/${searchValue}`;
       const response = await fetch(restCountriesAPI);
       const result = await response.json();
-      console.log(result);
+
+      if (result.message === "Not Found") {
+        return;
+      }
       setCountry((prevCountry) => {
         const country = result[0];
         const newCountry = {
@@ -35,30 +38,10 @@ function ResultView(props: Props) {
         };
         return newCountry;
       });
-
       return result;
     }
     fetchCountries(props.searchValue);
   }, [props.searchValue]);
-
-  const [contentVisible, setContentVisible] = useState(false);
-
-  const rootStyle: CSSProperties = {
-    position: "relative",
-    height: "100%",
-    width: "100%",
-    opacity: contentVisible ? 1 : 0,
-    transition: "opacity 1.5s ease",
-    transitionDelay: "500ms",
-  };
-
-  useEffect(() => {
-    const animation = setTimeout(() => {
-      setContentVisible(false);
-    }, 500);
-    setContentVisible(true);
-    clearTimeout(animation);
-  });
 
   return (
     <div style={rootStyle}>

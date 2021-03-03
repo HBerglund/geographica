@@ -1,7 +1,6 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import numeral from "numeral";
-import React from "react";
-import CountryTitle from "./CountryTitle";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 interface Props {
   name: string;
@@ -13,12 +12,30 @@ interface Props {
 }
 
 function CountryInfo(props: Props) {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const formattedPop = numeral(props.population).format("0,0");
+
+  const rootStyle: CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    position: "absolute",
+    right: "3%",
+    top: "20%",
+    padding: "1rem",
+    backgroundColor: prefersDarkMode
+      ? "rgba(0,0,0,0.5)"
+      : "rgba(255,255,255,0.5)",
+    borderColor: prefersDarkMode ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderRadius: "5px",
+  };
 
   return (
     <div style={rootStyle}>
-      <img style={flagStyle} src={props.flagUrl} alt='flag' />
-      <CountryTitle name={props.name} />
+      <img style={flagStyle} src={props.flagUrl} alt="flag" />
+      <br />
+      <h1>{props.name}</h1>
       <br />
       <span style={labelStyle}>Population</span>
       <h2>{formattedPop}</h2>
@@ -35,21 +52,9 @@ function CountryInfo(props: Props) {
   );
 }
 
-const rootStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  position: "absolute",
-  right: "3%",
-  top: "20%",
-  padding: "1rem",
-  backgroundColor: "rgba(0,0,0,0.5)",
-  border: "1px solid rgba(255, 255, 255, 0.5)",
-  borderRadius: "5px",
-};
-
 const labelStyle: CSSProperties = {
   fontSize: ".8rem",
-  color: "#f4f4f4",
+  opacity: 0.8,
   textTransform: "uppercase",
   letterSpacing: "1px",
 };
@@ -57,7 +62,8 @@ const labelStyle: CSSProperties = {
 const flagStyle: CSSProperties = {
   width: "200px",
   height: "120px",
-  marginBottom: "1rem",
+  margin: "auto",
+  objectFit: "cover",
 };
 
 export default CountryInfo;

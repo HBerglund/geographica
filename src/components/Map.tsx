@@ -67,6 +67,18 @@ function Map(props: Props) {
     if (props.searchValue) {
       updateMap(props.searchValue);
     }
+    if (props.searchValue === "0") {
+      setViewport(() => {
+        return {
+          ...viewport,
+          latitude: 0,
+          longitude: 0,
+          zoom: 1.5,
+          transitionDuration: 1000,
+          transitionInterpolator: new FlyToInterpolator(),
+        };
+      });
+    }
   }, [props.searchValue]);
 
   const goToDestination = (coordinates: {
