@@ -1,20 +1,30 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { useEffect, useState } from "react";
-import { formatDiagnosticsWithColorAndContext } from "typescript";
 
 interface Props {
   searchValue: string;
 }
 
-async function fetchCountries(searchValue: string) {
-  const restCountriesAPI = `https://restcountries.eu/rest/v2/name/${searchValue}`;
-  const response = await fetch(restCountriesAPI);
-  const result = await response.json();
-  console.log(result);
-}
-
 function ResultView(props: Props) {
+  const [country, setCountry] = useState({
+    name: "",
+  });
+
   useEffect(() => {
+    async function fetchCountries(searchValue: string) {
+      const restCountriesAPI = `https://restcountries.eu/rest/v2/name/${searchValue}`;
+      const response = await fetch(restCountriesAPI);
+      const result = await response.json();
+      setCountry((prevCountry) => {
+        const newCountry = {
+          ...prevCountry,
+          name: result[0].name,
+        };
+        return newCountry;
+      });
+
+      return result;
+    }
     fetchCountries(props.searchValue);
   }, [props.searchValue]);
 
@@ -39,7 +49,7 @@ function ResultView(props: Props) {
 
   return (
     <div style={rootStyle}>
-      <h1 style={{ ...titleStyle }}>{props.searchValue}</h1>
+      <h1 style={{ ...titleStyle }}>{country.name}</h1>
     </div>
   );
 }
