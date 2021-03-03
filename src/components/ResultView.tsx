@@ -1,5 +1,7 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { useEffect, useState } from "react";
+import CountryInfo from "./CountryInfo";
+import CountryTitle from "./CountryTitle";
 
 interface Props {
   searchValue: string;
@@ -8,6 +10,11 @@ interface Props {
 function ResultView(props: Props) {
   const [country, setCountry] = useState({
     name: "",
+    population: 0,
+    capital: "",
+    language: "",
+    currency: "",
+    flagUrl: "",
   });
 
   useEffect(() => {
@@ -15,10 +22,17 @@ function ResultView(props: Props) {
       const restCountriesAPI = `https://restcountries.eu/rest/v2/name/${searchValue}`;
       const response = await fetch(restCountriesAPI);
       const result = await response.json();
+      console.log(result);
       setCountry((prevCountry) => {
+        const country = result[0];
         const newCountry = {
           ...prevCountry,
-          name: result[0].name,
+          name: country.name,
+          population: country.population,
+          capital: country.capital,
+          language: country.languages[0].name,
+          currency: country.currencies[0].name,
+          flagUrl: country.flag,
         };
         return newCountry;
       });
@@ -49,23 +63,23 @@ function ResultView(props: Props) {
 
   return (
     <div style={rootStyle}>
-      <h1 style={{ ...titleStyle }}>{country.name}</h1>
+      {/* <CountryTitle name={country.name} /> */}
+      <CountryInfo
+        name={country.name}
+        population={country.population}
+        capital={country.capital}
+        language={country.language}
+        currency={country.currency}
+        flagUrl={country.flagUrl}
+      />
     </div>
   );
 }
 
-const wikiContainer: CSSProperties = {
-  width: "50%",
-  height: "90%",
-  border: "1px solid white",
-  borderRadius: "3px",
-};
-
-const titleStyle: CSSProperties = {
-  position: "absolute",
-  left: "3%",
-  top: "20%",
-  fontSize: "4vw",
+const rootStyle: CSSProperties = {
+  width: "100%",
+  height: "100%",
+  position: "relative",
 };
 
 export default ResultView;

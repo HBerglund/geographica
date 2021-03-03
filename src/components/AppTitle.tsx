@@ -8,6 +8,7 @@ const titleStyle: CSSProperties = {
   position: "fixed",
   top: "3%",
   left: "3%",
+  fontSize: "1rem",
 };
 
 export default AppTitle;
