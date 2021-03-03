@@ -1,7 +1,6 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { useEffect, useState } from "react";
 import CountryInfo from "./CountryInfo";
-import CountryTitle from "./CountryTitle";
 
 interface Props {
   searchValue: string;
@@ -63,7 +62,6 @@ function ResultView(props: Props) {
 
   return (
     <div style={rootStyle}>
-      {/* <CountryTitle name={country.name} /> */}
       <CountryInfo
         name={country.name}
         population={country.population}
