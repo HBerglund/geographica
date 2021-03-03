@@ -1,4 +1,4 @@
-import React, { useState, CSSProperties } from "react";
+import React, { useState, CSSProperties, useEffect } from "react";
 import ViewContainer from "../components/ViewContainer";
 import Map from "../components/Map";
 import AppTitle from "../components/AppTitle";
@@ -8,6 +8,11 @@ function Home() {
   const [showResult, setShowResult] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
+  const handleTitleClick = () => {
+    setSearchValue("0");
+    setShowResult(false);
+  };
+
   const handleSearchValueChange = (searchValue: string) => {
     setSearchValue(searchValue);
     setShowResult(true);
@@ -15,7 +20,7 @@ function Home() {
 
   return (
     <div style={rootStyle}>
-      <AppTitle />
+      <AppTitle onTitleClick={handleTitleClick} />
       <SearchBar
         onSearchValueChange={handleSearchValueChange}
         showResult={showResult}

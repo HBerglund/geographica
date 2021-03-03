@@ -1,9 +1,10 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import AppTitle from "../components/AppTitle";
 
 function Contact() {
   return (
     <div style={rootStyle}>
-      <h2>Contact</h2>
+      <AppTitle />
       <div style={contactDeets}>
         <span>Call if you want to get on the beers </span>
         <h3>070 640 92 48</h3>

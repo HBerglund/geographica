@@ -1,9 +1,10 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import AppTitle from "../components/AppTitle";
 
 function Privacy() {
   return (
     <div style={rootStyle}>
-      <h2>Privacy</h2>
+      <AppTitle />
       <div style={textStyle}>
         <span>We care about your privacy.</span>
       </div>
