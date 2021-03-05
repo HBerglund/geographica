@@ -9,9 +9,9 @@ function About() {
     <div style={rootStyle}>
       <AppTitle />
       <div style={imgWrapper}>
-        <img style={imgStyle} src={herman} />
-        <img style={imgStyle} src={victor} />
-        <img style={imgStyle} src={oscar} />
+        <img style={imgStyle} src={herman} alt='Herman with a helmet' />
+        <img style={imgStyle} src={victor} alt='Victor in shades' />
+        <img style={imgStyle} src={oscar} alt='Oscar on a moped' />
       </div>
     </div>
   );

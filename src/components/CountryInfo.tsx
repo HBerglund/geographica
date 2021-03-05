@@ -31,13 +31,14 @@ function CountryInfo(props: Props) {
     borderRadius: "5px",
   };
 
-  if (1) {
-    return (null as any).abc;
-  }
+  // Cast Error
+  // if (1) {
+  //   return (null as any).abc;
+  // }
 
   return (
     <div style={rootStyle}>
-      <img style={flagStyle} src={props.flagUrl} alt="flag" />
+      <img style={flagStyle} src={props.flagUrl} alt='flag' />
       <br />
       <h1>{props.name}</h1>
       <br />

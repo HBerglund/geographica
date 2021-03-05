@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, useEffect } from "react";
+import React, { ChangeEvent, KeyboardEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -45,9 +45,9 @@ function SearchBar(props: Props) {
     <>
       <TextField
         style={rootStyle}
-        label="Search for any country"
-        margin="normal"
-        variant="outlined"
+        label='Search for any country'
+        margin='normal'
+        variant='outlined'
         onChange={handleInputChange}
         onKeyPress={handleEnterEvent}
       ></TextField>
