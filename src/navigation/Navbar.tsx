@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 
 function Navbar() {
   const classes = useStyles();
+
   return (
     <BottomNavigation className={classes.root} showLabels>
       {routes.map(({ name, path }) => (

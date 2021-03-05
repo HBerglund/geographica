@@ -1,6 +1,7 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { useEffect, useState } from "react";
 import CountryInfo from "./CountryInfo";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 interface Props {
   searchValue: string;
@@ -45,14 +46,16 @@ function ResultView(props: Props) {
 
   return (
     <div style={rootStyle}>
-      <CountryInfo
-        name={country.name}
-        population={country.population}
-        capital={country.capital}
-        language={country.language}
-        currency={country.currency}
-        flagUrl={country.flagUrl}
-      />
+      <ErrorBoundary>
+        <CountryInfo
+          name={country.name}
+          population={country.population}
+          capital={country.capital}
+          language={country.language}
+          currency={country.currency}
+          flagUrl={country.flagUrl}
+        />
+      </ErrorBoundary>
     </div>
   );
 }
