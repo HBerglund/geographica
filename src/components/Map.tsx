@@ -5,6 +5,7 @@ import ReactMapGL, {
   WebMercatorViewport,
 } from "react-map-gl";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import ErrorBoundary from "./ErrorBoundary";
 
 interface Props {
   searchValue: string;
@@ -107,12 +108,14 @@ function Map(props: Props) {
 
   return (
     <div style={mapStyle}>
-      <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken={token}
-        mapStyle={prefersDarkMode ? darkStyle : lightStyle}
-        onViewportChange={setViewport}
-      ></ReactMapGL>
+      <ErrorBoundary>
+        <ReactMapGL
+          {...viewport}
+          mapboxApiAccessToken={token}
+          mapStyle={prefersDarkMode ? darkStyle : lightStyle}
+          onViewportChange={setViewport}
+        ></ReactMapGL>
+      </ErrorBoundary>
     </div>
   );
 }
