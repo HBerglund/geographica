@@ -80,6 +80,7 @@ function Map(props: Props) {
         };
       });
     }
+    // eslint-disable-next-line
   }, [props.searchValue]);
 
   const goToDestination = (coordinates: {
