@@ -91,7 +91,6 @@ function Map(props: Props) {
       [bboxFromApi[2], bboxFromApi[3]],
     ];
 
-    // Fix typing later
     setViewport((prevViewport) => {
       const newViewport = new WebMercatorViewport({
         //Helping typescript

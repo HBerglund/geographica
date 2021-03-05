@@ -1,4 +1,4 @@
-import React, { useState, CSSProperties, useEffect } from "react";
+import React, { useState, CSSProperties } from "react";
 import ViewContainer from "../components/ViewContainer";
 import Map from "../components/Map";
 import AppTitle from "../components/AppTitle";
