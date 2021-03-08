@@ -6,7 +6,6 @@ import ReactMapGL, {
 } from "react-map-gl";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import ErrorBoundary from "./ErrorBoundary";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 interface Props {
   searchValue: string;
