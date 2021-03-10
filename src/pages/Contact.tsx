@@ -6,8 +6,7 @@ function Contact() {
     <div style={rootStyle}>
       <AppTitle />
       <div style={contactDeets}>
-        <span>Call if you want to get on the beers </span>
-        <h3>070 640 92 48</h3>
+        <span>Call if you want to party </span>
       </div>
     </div>
   );

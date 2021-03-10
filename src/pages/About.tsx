@@ -9,9 +9,7 @@ function About() {
     <div style={rootStyle}>
       <AppTitle />
       <div style={imgWrapper}>
-        <img style={imgStyle} src={herman} alt='Herman with a helmet' />
-        <img style={imgStyle} src={victor} alt='Victor in shades' />
-        <img style={imgStyle} src={oscar} alt='Oscar on a moped' />
+        <span>Page in progress...</span>{" "}
       </div>
     </div>
   );
@@ -29,7 +27,7 @@ const rootStyle: CSSProperties = {
 
 const imgWrapper: CSSProperties = {
   display: "flex",
-  justifyContent: "space-evenly",
+  justifyContent: "center",
   alignItems: "center",
   height: "100%",
 };
