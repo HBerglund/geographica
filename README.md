@@ -15,6 +15,6 @@ Images is fetched from Pexels API.
 
 ## Deployed
 
-.......
+App deployed at: https://geographica.netlify.com/
 
 Created by: Herman Berglund, Victor Wikström, Oscar Andersson
